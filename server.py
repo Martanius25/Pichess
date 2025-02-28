@@ -60,4 +60,4 @@ def on_move(data):
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=5000)
->>>>>>> 8b09a1d3c4177340a613f0dc8eb8650066204586
+
