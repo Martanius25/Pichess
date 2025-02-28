@@ -1,3 +1,20 @@
+const socket = io("http://192.168.0.12:5000");  // Change to your server's IP
+let gameRoom = "room1";  // Unique game room
+
+socket.emit("join", { room: gameRoom });
+
+socket.on("update_board", (moves) => {
+    moves.forEach(move => game.move(move));
+    board.position(game.fen());  // Update board position
+});
+
+function sendMove(move) {
+    socket.emit("move", { room: gameRoom, move: move });
+}
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     let game = new Chess(); // Initialize chess.js game
     let gameMode = "ai"; // Default mode: AI opponent
@@ -6,7 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let board = Chessboard("board", {
         draggable: true,
         position: "start",
-        onDrop: handleMove
+        onDrop: function(source, target) {
+    let move = game.move({ from: source, to: target, promotion: 'q' });
+    if (move === null) return 'snapback';  // Invalid move
+
+    board.position(game.fen());  // Update board
+    sendMove(move);  // Send move to server
+}
     });
 
     // Initialize Stockfish AI
