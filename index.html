@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Chess</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    
+    <!-- Chessboard.js (Board UI) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+
+    <!-- Chess.js (Game Rules) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #board {
+            width: 400px;
+            margin: 20px auto;
+        }
+        select, button {
+            margin: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chess Game</h1>
+
+    <!-- Game Mode Selector -->
+    <label for="gameMode">Select Game Mode:</label>
+    <select id="gameMode">
+        <option value="ai">Play vs AI</option>
+        <option value="pvp">Play vs Player</option>
+    </select>
+    
+    <!-- Restart Button -->
+    <button onclick="restartGame()">Restart Game</button>
+
+    <!-- Chessboard -->
+    <div id="board"></div>
+
+    <!-- Stockfish AI Engine -->
+    <script src="stockfish-17-lite-single.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
