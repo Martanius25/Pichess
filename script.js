@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-const socket = io("http://192.168.0.12:5000");  // Change to your server's IP
+const socket = io("https://pichess-1-2ykt.onrender.com");  // Change to your server's IP
 let gameRoom = "room1";  // Unique game room
 
 socket.emit("join", { room: gameRoom });
